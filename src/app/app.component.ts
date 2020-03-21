@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
     
     ngOnInit(): void {
         this.isAuthenticated = this.keycloak.authenticated();
-        this.user$ = this.keycloak.getUser();
         
         if (this.isAuthenticated) {
+            this.user$ = this.keycloak.getUser();
             this.http.get(`${this.apiUrl}/test`).subscribe(
                 res => console.log(res)
             );

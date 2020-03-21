@@ -307,8 +307,8 @@
     />
     <span>Welcome</span>
     <span>
-        <button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
-        <button *ngIf="!isAuthenticated" (click)="login()">Login</button>
+        <button *authOnly="true" (click)="logout()">Logout</button>
+        <button *authOnly="false" (click)="login()">Login</button>
     </span>
     <span *ngIf="user$ | async as user">
         {{user.fullName}}

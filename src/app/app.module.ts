@@ -6,10 +6,12 @@ import { AppComponent } from "./app.component";
 import { KeycloakService, NgxKeycloakModule } from "@procempa/ngx-keycloak";
 import { AppConfigFactory } from "./factories";
 import { HttpClientModule } from "@angular/common/http";
+import { AuthOnlyDirective } from "./auth-only.directive";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        AuthOnlyDirective
     ],
     imports: [
         BrowserModule,
