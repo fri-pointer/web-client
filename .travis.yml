@@ -1,0 +1,30 @@
+sudo: required
+
+services:
+    - docker
+
+language: node_js
+dist: trusty
+node_js:
+    - '12'
+
+branches:
+    only:
+        - develop
+        - master
+
+cache:
+    directories:
+        - ./node_modules
+
+install: npm install
+
+script:
+    - npm run build:prod
+    - docker build -t fri-pointer/web-client .
+
+# Don't push image for now
+#after_success:
+#    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+#    - docker push fri-pointer/web-client
+
