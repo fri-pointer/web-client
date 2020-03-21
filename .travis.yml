@@ -15,15 +15,19 @@ cache:
   directories:
     - ./node_modules
 
+env:
+    global:
+        - DOCKER_IMAGE=docker.mjamsek.com/web-client:latest
+
 install: npm install
 
 script:
   - npm run build:prod
-  - docker build -t fri-pointer/web-client:latest .
+  - docker build -t $DOCKER_IMAGE .
 
 after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push fri-pointer/web-client:latest
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" docker.mjamsek.com
+  - docker push $DOCKER_IMAGE
 
 notifications:
   email: false
