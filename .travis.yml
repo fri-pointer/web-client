@@ -1,5 +1,3 @@
-sudo: required
-
 services:
   - docker
 
@@ -21,12 +19,11 @@ install: npm install
 
 script:
   - npm run build:prod
-  - docker build -t fri-pointer/web-client .
+  - docker build -t fri-pointer/web-client:latest .
 
-# Don't push image for now
-#after_success:
-#    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-#    - docker push fri-pointer/web-client
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push fri-pointer/web-client:latest
 
 notifications:
   email: false
