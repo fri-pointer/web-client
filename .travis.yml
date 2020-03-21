@@ -17,7 +17,7 @@ cache:
 
 env:
     global:
-        - DOCKER_IMAGE=docker.mjamsek.com/web-client:latest
+        - DOCKER_IMAGE=docker.mjamsek.com/fri-pointer-web-client:latest
 
 install: npm install
 
