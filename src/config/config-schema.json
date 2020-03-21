@@ -1,0 +1,12 @@
+{
+    "apis": {
+        "backend": {
+            "url": "$APP_BACKEND_URL"
+        }
+    },
+    "keycloak": {
+        "clientId": "$APP_KEYCLOAK_CLIENTID",
+        "realm": "$APP_KEYCLOAK_REALM",
+        "url": "$APP_KEYCLOAK_URL"
+    }
+}

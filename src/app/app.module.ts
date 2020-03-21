@@ -1,8 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { APP_INITIALIZER, NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { KeycloakService, NgxKeycloakModule } from "@procempa/ngx-keycloak";
+import { AppConfigFactory } from "./factories";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -10,9 +13,13 @@ import { AppComponent } from "./app.component";
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        HttpClientModule,
+        AppRoutingModule,
+        NgxKeycloakModule.forRoot()
     ],
-    providers: [],
+    providers: [
+        {provide: APP_INITIALIZER, useFactory: AppConfigFactory, multi: true, deps: [KeycloakService]},
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

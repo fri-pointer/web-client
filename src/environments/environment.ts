@@ -2,8 +2,20 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-    production: false
+import { AppEnv } from "./env.model";
+
+export const environment: AppEnv = {
+    production: false,
+    apis: {
+        backend: {
+            url: "http://localhost:8080"
+        }
+    },
+    keycloak: {
+        clientId: "web-client",
+        realm: "fri-pointer",
+        url: "https://keycloak.mjamsek.com/auth"
+    }
 };
 
 /*
