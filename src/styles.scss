@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i');
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i,900');
+
+@import "./styles/variables";
+
+// overrides for bootstrap
+
+// overrides for ngx-bootstrap
+
+@import "~bootstrap/scss/bootstrap";
+@import "~ngx-bootstrap/datepicker/bs-datepicker.scss";
+@import "~ngx-toasta/styles/style-material.css";
+
+// overrides
+
+// global styles
+// global styles
+* {
+    font-family: $font-open-sans;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-rubik;
+}
+
+table {
+    width: 100%;
+}

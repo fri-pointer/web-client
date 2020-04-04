@@ -1,0 +1,11 @@
+<p>upload-test works!</p>
+
+<div>
+    <form (ngSubmit)="submit()">
+        
+        <input type="file" (change)="onFileSelection($event.target.files)"/> <br/>
+        
+        <button type="submit">Submit</button>
+        
+    </form>
+</div>
