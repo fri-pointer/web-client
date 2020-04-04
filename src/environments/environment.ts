@@ -6,6 +6,7 @@ import { AppEnv } from "./env.model";
 
 export const environment: AppEnv = {
     production: false,
+    applicationId: "web-client",
     apis: {
         backend: {
             url: "http://localhost:8080"

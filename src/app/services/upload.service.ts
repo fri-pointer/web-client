@@ -23,12 +23,25 @@ export class UploadService {
         );
     }
     
-    public uploadFile(file: File): Observable<any> {
+    private uploadCallback(fileKey: string): Observable<void> {
+        const signature = new UploadSignature();
+        signature.key = fileKey;
+        const url = `${this.apiUrl}/upload/callback`;
+        return this.http.post(url, signature).pipe(
+            map(res => res as null)
+        );
+    }
+    
+    public uploadFile(file: File): Observable<void> {
         return this.getSignature(file).pipe(
             switchMap((uploadSignature: UploadSignature) => {
                 return this.http.put(uploadSignature.url, file, {
                     headers: uploadSignature.requiredHeaders
-                });
+                }).pipe(
+                    switchMap(() => {
+                        return this.uploadCallback(uploadSignature.key);
+                    })
+                );
             })
         );
     }
