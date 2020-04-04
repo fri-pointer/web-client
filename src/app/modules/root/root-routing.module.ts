@@ -10,6 +10,7 @@ const routes: Routes = [
         path: "", component: LayoutComponent, children: [
             {path: "", pathMatch: "full", component: LandingPageComponent},
             {path: "upload", component: UploadTestComponent},
+            {path: "", loadChildren: () => import("../courses/courses.module").then(m => m.CoursesModule)},
             {path: "404", component: Error404PageComponent}
         ]
     },
