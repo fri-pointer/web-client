@@ -1,12 +1,11 @@
 import { NgModule } from "@angular/core";
 import { ToastaModule } from "ngx-toasta";
-import {
-    AlertModule,
-    ModalModule, PaginationModule,
-    TimepickerModule,
-    TooltipModule,
-    TypeaheadModule
-} from "ngx-bootstrap";
+import { AlertModule } from "ngx-bootstrap/alert";
+import { TooltipModule } from "ngx-bootstrap/tooltip";
+import { ModalModule } from "ngx-bootstrap/modal";
+import { TimepickerModule } from "ngx-bootstrap/timepicker";
+import { TypeaheadModule } from "ngx-bootstrap/typeahead";
+import { PaginationModule } from "ngx-bootstrap/pagination";
 
 @NgModule({
     imports: [
@@ -29,5 +28,5 @@ import {
     ]
 })
 export class BootstrapModule {
-
+    
 }
