@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RootRoutingModule } from "./root-routing.module";
 import { Error404PageComponent } from "./pages/error404-page/error404-page.component";
 import { LayoutComponent } from "./layout/layout.component";
@@ -24,6 +24,7 @@ import { UploadTestComponent } from "./pages/upload-test/upload-test.component";
         HttpClientModule,
         BrowserAnimationsModule,
         FormsModule,
+        ReactiveFormsModule,
         NgxKeycloakModule.forRoot(),
         RootRoutingModule,
         SharedModule
