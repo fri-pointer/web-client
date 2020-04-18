@@ -1,9 +1,10 @@
 import { Inject, Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { API_URL } from "../injectables";
-import { Observable } from "rxjs";
-import { UploadSignature, UploadSignatureRequest } from "../../models";
-import { map, switchMap } from "rxjs/operators";
+import { Observable, throwError } from "rxjs";
+import { ForbiddenError, NotFoundError, UnknownError, UploadSignature, UploadSignatureRequest } from "../../models";
+import { catchError, map, switchMap } from "rxjs/operators";
+import { FORBIDDEN, NOT_FOUND } from "http-status-codes";
 
 @Injectable({
     providedIn: "root"
@@ -39,6 +40,14 @@ export class UploadService {
                 }).pipe(
                     switchMap(() => {
                         return this.uploadCallback(uploadSignature.key);
+                    }),
+                    catchError((err: HttpErrorResponse) => {
+                        if (err.status === FORBIDDEN) {
+                            return throwError(new ForbiddenError("Invalid signature url!"));
+                        } else if (err.status === NOT_FOUND) {
+                            return throwError(new NotFoundError("Invalid signature url!"));
+                        }
+                        return throwError(new UnknownError());
                     })
                 );
             })
