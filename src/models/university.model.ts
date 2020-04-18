@@ -1,6 +1,8 @@
 import { BaseType } from "./base-type.model";
+import { Faculty } from "./faculty.model";
 
 export class University extends BaseType {
-    public lcoation: string;
+    public location: string;
     public name: string;
+    public faculties?: Faculty[];
 }
