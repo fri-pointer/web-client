@@ -15,3 +15,5 @@ export { StudentProgram } from "./student-program.model";
 export { BaseError } from "./errors/base.error";
 export { NotFoundError } from "./errors/not-found.error";
 export { UnknownError } from "./errors/unknown.error";
+export { ConflictError } from "./errors/conflict.error";
+export { ForbiddenError } from "./errors/forbidden.error";

@@ -2,9 +2,8 @@ import { Inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { API_URL } from "../injectables";
 import { Observable } from "rxjs";
-import { UploadSignature } from "../../models";
+import { UploadSignature, UploadSignatureRequest } from "../../models";
 import { map, switchMap } from "rxjs/operators";
-import { UploadSignatureRequest } from "../../models/upload-signature.model";
 
 @Injectable({
     providedIn: "root"
