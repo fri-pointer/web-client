@@ -17,3 +17,7 @@ export { NotFoundError } from "./errors/not-found.error";
 export { UnknownError } from "./errors/unknown.error";
 export { ConflictError } from "./errors/conflict.error";
 export { ForbiddenError } from "./errors/forbidden.error";
+export { BadRequestError } from "./errors/bad-request.error";
+export { InternalServerError } from "./errors/internal-server.error";
+export { UnauthorizedError } from "./errors/unauthorized.error";
+export { ValidationError } from "./errors/validation.error";

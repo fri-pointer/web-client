@@ -1,10 +1,10 @@
 import { Inject, Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { API_URL } from "../injectables";
-import { Observable, throwError } from "rxjs";
-import { ForbiddenError, NotFoundError, UnknownError, UploadSignature, UploadSignatureRequest } from "../../models";
+import { Observable, of, throwError } from "rxjs";
+import { ForbiddenError, InternalServerError, NotFoundError, UnauthorizedError, UnknownError, UploadSignature, UploadSignatureRequest } from "../../models";
 import { catchError, map, switchMap } from "rxjs/operators";
-import { FORBIDDEN, NOT_FOUND } from "http-status-codes";
+import { FORBIDDEN, INTERNAL_SERVER_ERROR, NOT_FOUND, UNAUTHORIZED } from "http-status-codes";
 
 @Injectable({
     providedIn: "root"
@@ -19,7 +19,15 @@ export class UploadService {
         const signatureRequest = UploadSignatureRequest.from(file);
         const url = `${this.apiUrl}/upload/signature`;
         return this.http.post(url, signatureRequest).pipe(
-            map(res => res as UploadSignature)
+            map(res => res as UploadSignature),
+            catchError((err: HttpErrorResponse) => {
+                if (err.status === UNAUTHORIZED) {
+                    return throwError(new UnauthorizedError("Unauthorized!"));
+                } else if (err.status === INTERNAL_SERVER_ERROR) {
+                    return throwError(new InternalServerError("Server error!"));
+                }
+                return throwError(new UnknownError());
+            })
         );
     }
     
@@ -28,7 +36,9 @@ export class UploadService {
         signature.key = fileKey;
         const url = `${this.apiUrl}/upload/callback`;
         return this.http.post(url, signature).pipe(
-            map(res => res as null)
+            map(res => res as null),
+            // Always successfully complete
+            catchError(() => of(null))
         );
     }
     
