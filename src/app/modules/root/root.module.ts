@@ -11,13 +11,15 @@ import { RouterModule } from "@angular/router";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxKeycloakModule } from "@procempa/ngx-keycloak";
 import { UploadTestComponent } from "./pages/upload-test/upload-test.component";
+import { QuillTestComponent } from './pages/quill-test/quill-test.component';
 
 @NgModule({
     declarations: [
         Error404PageComponent,
         LayoutComponent,
         LandingPageComponent,
-        UploadTestComponent
+        UploadTestComponent,
+        QuillTestComponent
     ],
     imports: [
         CommonModule,

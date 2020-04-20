@@ -6,6 +6,7 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { TimepickerModule } from "ngx-bootstrap/timepicker";
 import { TypeaheadModule } from "ngx-bootstrap/typeahead";
 import { PaginationModule } from "ngx-bootstrap/pagination";
+import { QuillModule } from "ngx-quill";
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import { PaginationModule } from "ngx-bootstrap/pagination";
         TimepickerModule.forRoot(),
         ToastaModule.forRoot(),
         TypeaheadModule.forRoot(),
-        PaginationModule.forRoot()
+        PaginationModule.forRoot(),
+        QuillModule.forRoot()
     ],
     exports: [
         TooltipModule,
@@ -24,7 +26,8 @@ import { PaginationModule } from "ngx-bootstrap/pagination";
         TimepickerModule,
         ToastaModule,
         TypeaheadModule,
-        PaginationModule
+        PaginationModule,
+        QuillModule
     ]
 })
 export class BootstrapModule {

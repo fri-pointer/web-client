@@ -1,0 +1,10 @@
+<h1>quill-test works!</h1>
+
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+    <quill-editor formControlName="text"
+        [sanitize]="true"
+        (onContentChanged)="onContentChanged($event)">
+    </quill-editor>
+    <button type="submit">Submit</button>
+</form>
+
