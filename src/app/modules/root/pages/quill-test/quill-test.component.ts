@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { ContentChange } from "ngx-quill";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: "fp-quill-test",
@@ -11,7 +12,8 @@ export class QuillTestComponent implements OnInit {
     
     public formGroup: FormGroup;
     
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private formBuilder: FormBuilder,
+                private http: HttpClient) {
     }
     
     ngOnInit(): void {
@@ -23,6 +25,10 @@ export class QuillTestComponent implements OnInit {
     
     public submit() {
         console.log(this.formGroup.getRawValue());
+        
+        this.http.post("http://localhost:8080/v1/upload/extract", {html: this.htmlTextCtrl.value}).subscribe((res: any) => {
+            console.log(res);
+        });
     }
     
     public onContentChanged($event: ContentChange) {
@@ -31,5 +37,9 @@ export class QuillTestComponent implements OnInit {
     
     public get plainTextCtrl(): FormControl {
         return this.formGroup.controls.plainText as FormControl;
+    }
+    
+    public get htmlTextCtrl(): FormControl {
+        return this.formGroup.controls.text as FormControl;
     }
 }
