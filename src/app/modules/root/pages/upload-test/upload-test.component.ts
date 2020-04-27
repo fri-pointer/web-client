@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UploadService } from "../../../../services/upload.service";
+import { BaseError, NotFoundError } from "../../../../../models";
 
 @Component({
     selector: "fp-upload-test",
@@ -26,8 +27,11 @@ export class UploadTestComponent implements OnInit {
             (res) => {
                 console.log("Uploaded! ", res);
             },
-            (err) => {
+            (err: BaseError) => {
                 console.error(err);
+                if (err instanceof NotFoundError) {
+                    
+                }
             }
         );
     }

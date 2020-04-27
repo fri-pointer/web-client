@@ -13,6 +13,7 @@ const routes: Routes = [
             {path: "upload", component: UploadTestComponent},
             {path: "quill", component: QuillTestComponent},
             {path: "", loadChildren: () => import("../courses/courses.module").then(m => m.CoursesModule)},
+            {path: "setup", loadChildren: () => import("../setup/setup.module").then(m => m.SetupModule)},
             {path: "404", component: Error404PageComponent}
         ]
     },
